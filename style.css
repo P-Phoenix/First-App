@@ -1,0 +1,220 @@
+/* 1. General Styling */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    background-color: #f4f7f6;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Align to top to see content when list grows */
+    min-height: 100vh;
+    color: #333;
+}
+
+main {
+    background-color: #ffffff;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px; /* Max width for the app container */
+}
+
+#prioritySelect {
+    padding: 10px;
+    margin-right: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1em;
+    box-sizing: border-box;
+    width: auto; /* Or a specific width if preferred */
+}
+
+/* 2. Header/Title */
+header h1 {
+    color: #2c3e50;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 2em;
+}
+
+/* 3. Input Area */
+#taskInput {
+    width: calc(100% - 100px); /* Adjust width to fit button */
+    padding: 10px 15px;
+    margin-right: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1em;
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+
+#addTaskBtn {
+    padding: 10px 15px;
+    background-color: #5cb85c;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+}
+
+#addTaskBtn:hover {
+    background-color: #4cae4c;
+}
+
+/* 4. Task List */
+#taskList {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 20px;
+}
+
+#taskList li {
+    background-color: #f9f9f9;
+    padding: 12px 15px;
+    margin-bottom: 8px;
+    border: 1px solid #eee;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: background-color 0.3s ease, opacity 0.3s ease; /* For smooth transitions */
+    border-left-width: 5px; /* Make space for priority border */
+    border-left-style: solid;
+    /* Default border color, will be overridden by priority classes */
+    border-left-color: transparent; /* Or a neutral default like #eee */
+}
+
+/* Priority Styling */
+.priority-high {
+    border-left-color: #d9534f; /* Red */
+}
+.priority-medium {
+    border-left-color: #f0ad4e; /* Orange */
+}
+.priority-low {
+    border-left-color: #5cb85c; /* Green */
+}
+
+
+/* 5. Task Content */
+#taskList li span {
+    flex-grow: 1;
+    margin: 0 10px;
+    font-size: 1em;
+    transition: color 0.3s ease;
+}
+
+#taskList li input[type="checkbox"] {
+    margin-right: 10px;
+    cursor: pointer;
+    /* Larger, more visible checkboxes */
+    width: 18px;
+    height: 18px;
+}
+
+#taskList li button { /* Remove button */
+    background-color: #d9534f;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 6px 10px;
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: background-color 0.3s ease;
+}
+
+#taskList li button:hover {
+    background-color: #c9302c;
+}
+
+/* 6. Completed Tasks */
+#taskList li.completed span {
+    text-decoration: line-through;
+    color: #aaa;
+}
+
+#taskList li.completed {
+    background-color: #e9e9e9;
+    opacity: 0.7;
+}
+
+/* 7. Filter Buttons */
+.filters {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.filters button {
+    padding: 8px 12px;
+    margin: 0 5px;
+    border: 1px solid #ddd;
+    background-color: #fff;
+    color: #337ab7;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.filters button:hover {
+    background-color: #e7e7e7;
+}
+
+.filters button.active { /* Assuming an 'active' class will be added via JS */
+    background-color: #337ab7;
+    color: white;
+    border-color: #2e6da4;
+}
+
+/* Task Summary Area (Counter and Clear Button) */
+.task-summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    padding: 10px 0; /* Add some padding above and below */
+    border-top: 1px solid #eee; /* Optional: adds a separator line */
+}
+
+#activeTasksCounter {
+    font-size: 0.9em;
+    color: #555;
+}
+
+#clearCompletedBtn {
+    padding: 8px 12px;
+    background-color: #d9534f; /* Similar to remove button, or choose another */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: background-color 0.3s ease;
+}
+
+#clearCompletedBtn:hover {
+    background-color: #c9302c;
+}
+
+
+/* 8. Interactivity (Optional Basic Transitions) */
+/* Transitions added above where relevant (e.g., #taskList li, #addTaskBtn, etc.) */
+
+/* Adding a simple animation for new tasks */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+#taskList li {
+    /* Apply fade-in animation to new items - this might be tricky without JS directly adding a class for new items */
+    /* For simplicity, existing transitions on background/opacity will provide some smoothness */
+}

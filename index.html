@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My To-Do List</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>My To-Do List</h1>
+    </header>
+    <main>
+        <input type="text" id="taskInput" placeholder="Add a new task">
+        <select id="prioritySelect">
+            <option value="low">Low</option>
+            <option value="medium" selected>Medium</option>
+            <option value="high">High</option>
+        </select>
+        <button id="addTaskBtn">Add Task</button>
+        <ul id="taskList">
+            <!-- Tasks will be added here by JavaScript -->
+        </ul>
+        <div class="filters">
+            <button id="allFilter">All</button>
+            <button id="activeFilter">Active</button>
+            <button id="completedFilter">Completed</button>
+        </div>
+        <div class="task-summary">
+            <p id="activeTasksCounter">0 tasks remaining</p>
+            <button id="clearCompletedBtn">Clear Completed</button>
+        </div>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>
